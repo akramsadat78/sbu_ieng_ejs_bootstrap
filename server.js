@@ -19,13 +19,21 @@ axios.get('http://covid19api.xapix.io/v2/locations')
     .then((response) => {
             jsonContent = response.data;
             console.log(jsonContent);
+
+            var atest_inf_for_all_countries = {
+                "latest": jsonContent.latest,
+                "locations": jsonContent.locations
+            }
+
+            data = JSON.stringify(atest_inf_for_all_countries, null, 2);
+
+            fs.writeFileSync('data.json', data);
+
         }
 
     );
 
 app.get('/', (req, res) => {
-
-
     var locationsValue = {
         name: 'Armenia',
         population: '2951776',
@@ -45,13 +53,9 @@ app.get('/', (req, res) => {
         });
     }
 
-
-
     res.render('h', {
         dat: arrObject
     });
-
-
 });
 
 app.put('/', function(req, res) {
