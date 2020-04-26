@@ -6,7 +6,12 @@ app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
 
-    res.render('h', { name: 'Akashdeep' });
+    var data = {
+        name: 'Akram',
+        hobbies: ['playing football', 'playing chess', 'cycling']
+    }
+
+    res.render('h', { data: data });
 
 });
 
