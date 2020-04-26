@@ -5,12 +5,23 @@ const bodyParser = require('body-parser')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
+const axios = require('axios');
+
 const fs = require('fs');
 
 var json = require('./data.json');
 
 // Set EJS as templating engine 
 app.set('view engine', 'ejs');
+
+var jsonContent;
+axios.get('http://covid19api.xapix.io/v2/locations')
+    .then((response) => {
+            jsonContent = response.data;
+            console.log(jsonContent);
+        }
+
+    );
 
 app.get('/', (req, res) => {
 
@@ -21,11 +32,6 @@ app.get('/', (req, res) => {
         confirmedCases: '1677',
         deaths: '28',
         recovered: '0'
-    }
-
-
-    var lValue = {
-        nam: 'Aa'
     }
 
     var arrObject = [];
@@ -42,8 +48,7 @@ app.get('/', (req, res) => {
 
 
     res.render('h', {
-        dat: arrObject,
-        dats: lValue
+        dat: arrObject
     });
 
 
