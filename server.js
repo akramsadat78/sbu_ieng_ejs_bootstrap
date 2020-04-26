@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
 
+var json = require('./data.json');
+
 // Set EJS as templating engine 
 app.set('view engine', 'ejs');
 
