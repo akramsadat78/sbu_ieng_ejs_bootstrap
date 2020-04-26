@@ -10,45 +10,71 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>COVID 19</title>
-
-    <style type="text/css" media="screen">
-        body {
-            background-color: skyblue;
-            text-decoration-color: white;
-            font-size: 2em;
-        }
-    </style>
 
 </head>
 
 <body>
+    <div class=".container-fluid">
 
-    <table>
+        <!--<img src="Coronavirus.jpg" class="rounded-circle" class="float-left" alt="Cinque Terre">-->
 
-        <% for(var i=0; i < dat.length; i++) { %>
-            <tr>
-                <td>
-                    <%= i %>
-                        <%= dat[i].name %>
-                            <%= dat[i].population %>
+        <div class="text-center text-info">
+            <h1>statistics of <abbr>COVID-19 </abbr> over the world</h1>
+        </div>
+        <div class="container-fluid">
+            <table class="table ">
+
+                <thead>
+                    <tr class="table-danger ">
+                        <th scope="col " style="background-color:rgb(95, 29, 112);">number</th>
+                        <th scope="col " style="background-color:rgb(95, 29, 112);">Name</th>
+                        <th scope="col " style="background-color:rgb(95, 29, 112);">Population</th>
+                        <th scope="col " style="background-color:rgb(95, 29, 112);">ConfirmedCases</th>
+                        <th scope="col " style="background-color:rgb(95, 29, 112);">Deaths</th>
+                        <th scope="col " style="background-color:rgb(95, 29, 112);">Recovered</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <% for(var i=0; i < dat.length; i++) { %>
+                        <tr>
+                            <th scope="row ">
+                                <%= i %>
+                            </th>
+
+                            <td>
+                                <%= dat[i].name %>
+                            </td>
+                            <td>
+                                <%= dat[i].population %>
+                            </td>
+                            <td>
                                 <%= dat[i].confirmedCases %>
-                                    <%= dat[i].deaths %>
-                                        <%= dat[i].recovered %>
-                </td>
-            </tr>
-            <% } %>
+                            </td>
+                            <td>
+                                <%= dat[i].deaths %>
+                            </td>
+                            <td>
+                                <%= dat[i].recovered %>
+                            </td>
+                        </tr>
+                        <% } %>
 
-    </table>
+                </tbody>
+            </table>
+        </div>
 
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js " integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n " crossorigin="anonymous "></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js " integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo " crossorigin="anonymous "></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js " integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6 " crossorigin="anonymous "></script>
 
+    </div>
 </body>
 
 </html>
