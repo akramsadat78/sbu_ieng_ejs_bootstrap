@@ -28,14 +28,21 @@ app.get('/', (req, res) => {
         nam: 'Aa'
     }
 
-
-    for (var i = 0; i < json.latest.locations.length; i++) {
-        json.latest.locations.country[i];
+    var arrObject = [];
+    for (var i = 0; i < json.locations.length; i++) {
+        arrObject.push({
+            name: json.locations[i].country,
+            population: json.locations[i].country_population,
+            confirmedCases: json.locations[i].latest.confirmed,
+            deaths: json.locations[i].latest.deaths,
+            recovered: json.locations[i].latest.recovered
+        });
     }
 
 
+
     res.render('h', {
-        dat: locationsValue,
+        dat: arrObject,
         dats: lValue
     });
 
