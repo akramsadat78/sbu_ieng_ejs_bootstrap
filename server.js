@@ -11,30 +11,49 @@ var json = require('./data.json');
 
 var inside = require('point-in-polygon');
 
-console.log(1);
 // Set EJS as templating engine 
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
 
-    var data = {
-        name: 'Akram',
-        hobbies: ['playing football', 'playing chess', 'cycling']
+
+    var locationsValue = {
+        name: 'Armenia',
+        population: '2951776',
+        confirmedCases: '1677',
+        deaths: '28',
+        recovered: '0'
     }
 
-    res.render('h', { data: data });
+
+    var lValue = {
+        nam: 'Aa'
+    }
+
+
+    for (var i = 0; i < json.latest.locations.length; i++) {
+        json.latest.locations.country[i];
+    }
+
+
+    res.render('h', {
+        dat: locationsValue,
+        dats: lValue
+    });
+
 
 });
-console.log(2);
 
 app.put('/', function(req, res) {
 
     let data = req.body;
 
     var atest_inf_for_all_countries = {
-        "latest": [...json.latest, data],
+        "latest": data.latest,
         "locations": [...json.locations, data]
     }
+
+
 
     data = JSON.stringify(atest_inf_for_all_countries, null, 2);
 
