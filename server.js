@@ -9,8 +9,6 @@ const fs = require('fs');
 
 var json = require('./data.json');
 
-var inside = require('point-in-polygon');
-
 // Set EJS as templating engine 
 app.set('view engine', 'ejs');
 
@@ -50,7 +48,7 @@ app.put('/', function(req, res) {
 
     var atest_inf_for_all_countries = {
         "latest": data.latest,
-        "locations": [...json.locations, data]
+        "locations": data.locations
     }
 
 
