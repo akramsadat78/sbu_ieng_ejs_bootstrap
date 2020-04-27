@@ -1,6 +1,12 @@
 var express = require('express');
 var app = express();
 
+const dotenv = require("dotenv");
+dotenv.config();
+
+app.use(express.static(__dirname + '/public'));
+app.use(express.static("public"));
+
 const axios = require('axios');
 
 const PORT = process.env.PORT || 5000;
@@ -10,6 +16,7 @@ app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
     let jsonContent;
+    //update information
     axios.get('http://covid19api.xapix.io/v2/locations')
         .then(function(response, jsonContent) {
 
@@ -34,14 +41,9 @@ app.get('/', (req, res) => {
                 });
             }
 
-            res.render('index', { dat: arrObject })
+            res.render('pages/index', { dat: arrObject })
         });
 
-
 });
 
-console.log(1);
-
-var server = app.listen(3000, function() {
-    console.log('listining to port 4000')
-});
+app.listen(PORT);
