@@ -3,7 +3,13 @@ var app = express();
 
 const axios = require('axios');
 
+const fs = require('fs');
 
+var json = require('./data.json');
+
+
+// Set EJS as templating engine 
+app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
     let jsonContent;
@@ -11,8 +17,19 @@ app.get('/', (req, res) => {
         .then(function(response, jsonContent) {
 
             jsonContent = response.data;
+
+            var atest_inf_for_all_countries = {
+                "latest": jsonContent.latest,
+                "locations": jsonContent.locations
+            }
+
+
+            data = JSON.stringify(atest_inf_for_all_countries, null, 2);
+
+            fs.writeFileSync('data.json', data);
+
         });
-    console.log(jsonContent.locations[0]);
+    console.log(json.locations[0]);
 
     var locationsValue = {
         name: 'Armenia',
@@ -23,17 +40,17 @@ app.get('/', (req, res) => {
     }
 
     var arrObject = [];
-    for (var i = 0; i < jsonContent.locations.length; i++) {
+    for (var i = 0; i < json.locations.length; i++) {
         arrObject.push({
-            name: jsonContent.locations[i].country,
-            population: jsonContent.locations[i].country_population,
-            confirmedCases: jsonContent.locations[i].latest.confirmed,
-            deaths: jsonContent.locations[i].latest.deaths,
-            recovered: jsonContent.locations[i].latest.recovered
+            name: json.locations[i].country,
+            population: json.locations[i].country_population,
+            confirmedCases: json.locations[i].latest.confirmed,
+            deaths: json.locations[i].latest.deaths,
+            recovered: json.locations[i].latest.recovered
         });
     }
 
-    response.render('index', { dat: arrObject })
+    res.render('index', { dat: arrObject })
 });
 
 
